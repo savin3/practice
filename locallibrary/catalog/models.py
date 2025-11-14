@@ -1,5 +1,11 @@
 from django.db import models
 from datetime import date
+from django.urls import reverse # Used to generate URLs by reversing the URL patterns
+from django.contrib.auth.models import User
+import uuid
+from datetime import date
+from django.conf import settings
+
 
 class Genre(models.Model):
     """
@@ -12,11 +18,6 @@ class Genre(models.Model):
         String for representing the Model object (in Admin site etc.)
         """
         return self.name
-
-from django.urls import reverse # Used to generate URLs by reversing the URL patterns
-
-from django.contrib.auth.models import User
-
 
 class Language(models.Model):
     """
@@ -73,10 +74,6 @@ class Book(models.Model):
 
     display_genre.short_description = 'Genre'
 
-import uuid
-from datetime import date
-
-from django.conf import settings
 
 class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,
